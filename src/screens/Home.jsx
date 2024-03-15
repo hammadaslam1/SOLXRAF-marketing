@@ -6,6 +6,7 @@ const Home = () => {
   const slides = [
     "https://learnphotographycanada.com/wp-content/uploads/2018/01/wallpaper.wiki-Awesome-bedroom-wallpaper-texture-black-PIC-WPC009500.jpg",
   ];
+  // api = 'AIzaSyCRRLDe0UQGmY9tRulQnTls8h1OoHJ3zhA'
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {/* <Carousel NextIcon={<ArrowForward />} PrevIcon={<ArrowBack />}>
@@ -33,6 +34,21 @@ const Home = () => {
       </Carousel> */}
       <Typography variant="h2">hammad</Typography>
       <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      <Typography variant="h2">hammad</Typography>
+      
     </div>
   );
 };
