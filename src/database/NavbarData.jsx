@@ -1,10 +1,11 @@
 /* eslint-disable no-use-before-define */
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { BLOGS, CASE_STUDY, CONTACT, HOME, PORTFOLIO } from "../router/Router";
-import AWIN from "../components/assets/icons/Awin.png";
-import RAKUTEN from "../components/assets/icons/Rakuten.png";
-import SHAREASALE from "../components/assets/icons/ShareASale.png";
-import Tradedoubler from "../components/assets/icons/svgs/Tradedoubler";
+import AWIN from "../components/assets/icons/svgs/Awin.svg";
+import RAKUTEN from "../components/assets/icons/svgs/Rakuten.svg";
+import SHAREASALE from "../components/assets/icons/svgs/ShareASale.svg";
+import Tradedoubler from "../components/assets/icons/svgs/tradedoubler.svg";
+import Partnerstack from "../components/assets/icons/svgs/partnerstack.svg";
 
 const socialLinkStyle = {
   sociallinks: {
@@ -15,6 +16,29 @@ const socialLinkStyle = {
     "&:hover": { color: "#f00" },
   },
 };
+
+export const partners = [
+  {
+    to: "/",
+    icon: AWIN,
+  },
+  // {
+  //   to: "/",
+  //   icon: RAKUTEN,
+  // },
+  {
+    to: "/",
+    icon: SHAREASALE,
+  },
+  {
+    to: "/",
+    icon: Tradedoubler,
+  },
+  {
+    to: "/",
+    icon: Partnerstack,
+  },
+];
 
 export const navbarLinks = [
   {
@@ -55,24 +79,5 @@ export const socialLinks = [
   {
     to: "https://www.instagram.com/solxraf/",
     icon: <Instagram sx={socialLinkStyle.sociallinks} />,
-  },
-];
-
-export const partners = [
-  {
-    to: "/",
-    icon: AWIN,
-  },
-  {
-    to: "/",
-    icon: RAKUTEN,
-  },
-  {
-    to: "/",
-    icon: SHAREASALE,
-  },
-  {
-    to: "/",
-    icon: <Tradedoubler />,
   },
 ];

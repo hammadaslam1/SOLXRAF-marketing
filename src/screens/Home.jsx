@@ -18,9 +18,9 @@ const Home = () => {
   // api = 'AIzaSyCRRLDe0UQGmY9tRulQnTls8h1OoHJ3zhA'
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Marquee dir={"right"} />
+      {/* <Marquee dir={"right"} /> */}
       <Header />
-      <Marquee dir={"left"} />
+      <Marquee dir={"right"} />
     </div>
   );
 };
