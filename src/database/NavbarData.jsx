@@ -1,5 +1,20 @@
+/* eslint-disable no-use-before-define */
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { BLOGS, CASE_STUDY, CONTACT, HOME, PORTFOLIO } from "../router/Router";
+import AWIN from "../components/assets/icons/Awin.png";
+import RAKUTEN from "../components/assets/icons/Rakuten.png";
+import SHAREASALE from "../components/assets/icons/ShareASale.png";
+import Tradedoubler from "../components/assets/icons/svgs/Tradedoubler";
+
+const socialLinkStyle = {
+  sociallinks: {
+    color: "#fff",
+    fontSize: "1.3rem",
+    padding: 0,
+    margin: 0,
+    "&:hover": { color: "#f00" },
+  },
+};
 
 export const navbarLinks = [
   {
@@ -8,13 +23,8 @@ export const navbarLinks = [
     onClick: () => console.log("pressed"),
   },
   {
-    to: CASE_STUDY,
-    name: "Case Study",
-    onClick: () => console.log("pressed"),
-  },
-  {
     to: PORTFOLIO,
-    name: "Portfolio",
+    name: "Our Services",
     onClick: () => console.log("pressed"),
   },
   {
@@ -31,23 +41,38 @@ export const navbarLinks = [
 
 export const socialLinks = [
   {
+    to: "https://www.facebook.com/SolXraf/",
+    icon: <Facebook sx={socialLinkStyle.sociallinks} />,
+  },
+  {
+    to: "https://www.linkedin.com/company/solxraf/",
+    icon: <LinkedIn sx={socialLinkStyle.sociallinks} />,
+  },
+  {
+    to: "https://twitter.com/solxraf",
+    icon: <Twitter sx={socialLinkStyle.sociallinks} />,
+  },
+  {
+    to: "https://www.instagram.com/solxraf/",
+    icon: <Instagram sx={socialLinkStyle.sociallinks} />,
+  },
+];
+
+export const partners = [
+  {
     to: "/",
-    icon: <Facebook sx={{ color: "#fff", fontSize: "1.3rem", '&:hover':{color: '#f00'} }} />,
-    onClick: () => alert("pressed"),
+    icon: AWIN,
   },
   {
     to: "/",
-    icon: <LinkedIn sx={{ color: "#fff", fontSize: "1.3rem", '&:hover':{color: '#f00'} }} />,
-    onClick: () => alert("pressed"),
+    icon: RAKUTEN,
   },
   {
     to: "/",
-    icon: <Twitter sx={{ color: "#fff", fontSize: "1.3rem", '&:hover':{color: '#f00'} }} />,
-    onClick: () => alert("pressed"),
+    icon: SHAREASALE,
   },
   {
     to: "/",
-    icon: <Instagram sx={{ color: "#fff", fontSize: "1.3rem", '&:hover':{color: '#f00'} }} />,
-    onClick: () => alert("pressed"),
+    icon: <Tradedoubler />,
   },
 ];

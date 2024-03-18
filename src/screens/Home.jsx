@@ -1,54 +1,26 @@
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { Box, Card, Typography } from "@mui/material";
-import Carousel from "react-material-ui-carousel";
+import { Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Header from "../components/navbars/Header";
+import Marquee from "../components/navbars/Marque";
 
 const Home = () => {
-  const slides = [
-    "https://learnphotographycanada.com/wp-content/uploads/2018/01/wallpaper.wiki-Awesome-bedroom-wallpaper-texture-black-PIC-WPC009500.jpg",
-  ];
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+    axios
+      .get("mongodb://localhost/solxraf")
+      .then((response) => setItems(response.data))
+      .catch((error) => console.error(error));
+    console.log(items);
+  }, []);
   // api = 'AIzaSyCRRLDe0UQGmY9tRulQnTls8h1OoHJ3zhA'
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {/* <Carousel NextIcon={<ArrowForward />} PrevIcon={<ArrowBack />}>
-        {slides.map((data, i) => (
-          <Box
-            sx={{
-              //   padding: 10,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-              height: "50vh",
-              backgroundImage: `url(${data})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              textAlign: "center",
-              fontSize: "5vw",
-              color: "#fff",
-            }}
-          >
-            {i}
-          </Box>
-        ))}
-      </Carousel> */}
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      <Typography variant="h2">hammad</Typography>
-      
+      <Marquee dir={"right"} />
+      <Header />
+      <Marquee dir={"left"} />
     </div>
   );
 };
