@@ -1,27 +1,16 @@
-import { Box, Button, Toolbar, Typography } from "@mui/material";
-import BACKIMAGE from "../assets/backgrounds/textureBack.jpg";
-import { HOME } from "../../router/Router";
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Typography } from "@mui/material";
 
 const Header = () => {
-  const navigate = useNavigate();
   return (
     <Box
       sx={{
-        //   padding: 10,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
         height: "60vh",
-        // backgroundColor: "#023d65",
-        backgroundImage: `url(${BACKIMAGE})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
         textAlign: "center",
         fontSize: "5vw",
-        // color: "#000",
       }}
     >
       <div
@@ -60,9 +49,14 @@ const Header = () => {
               fontSize: "18px",
               color: "#304FA1",
               fontWeight: "bold",
-              "&:hover": { backgroundColor: "#fffe" },
+              border: "1px solid transparent",
+              "&:hover": {
+                backgroundColor: "#304FA100",
+                color: "#fff",
+                border: "1px solid #fff",
+              },
             }}
-            // onClick={() => alert("shut up")}
+            disableElevation
           >
             Book Meeting
           </Button>

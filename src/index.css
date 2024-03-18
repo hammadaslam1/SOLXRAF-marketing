@@ -14,7 +14,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #304FA100;
+  /* background-color: #304FA100; */
+
+}
+
+.home {
+  background-image: url('./components/assets/backgrounds/textureBack.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {

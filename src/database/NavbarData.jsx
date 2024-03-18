@@ -1,8 +1,8 @@
 /* eslint-disable no-use-before-define */
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { BLOGS, CASE_STUDY, CONTACT, HOME, PORTFOLIO } from "../router/Router";
+import { BLOGS, CONTACT, HOME, PORTFOLIO } from "../router/Router";
 import AWIN from "../components/assets/icons/svgs/Awin.svg";
-import RAKUTEN from "../components/assets/icons/svgs/Rakuten.svg";
+// import RAKUTEN from "../components/assets/icons/svgs/Rakuten.svg";
 import SHAREASALE from "../components/assets/icons/svgs/ShareASale.svg";
 import Tradedoubler from "../components/assets/icons/svgs/tradedoubler.svg";
 import Partnerstack from "../components/assets/icons/svgs/partnerstack.svg";
@@ -19,23 +19,23 @@ const socialLinkStyle = {
 
 export const partners = [
   {
-    to: "/",
+    to: "https://www.awin.com/",
     icon: AWIN,
   },
   // {
-  //   to: "/",
+  //   to: "https://www.rakuten.com/",
   //   icon: RAKUTEN,
   // },
   {
-    to: "/",
+    to: "https://www.shareasale.com/",
     icon: SHAREASALE,
   },
   {
-    to: "/",
+    to: "https://www.tradedoubler.com/en/",
     icon: Tradedoubler,
   },
   {
-    to: "/",
+    to: "https://partnerstack.com/",
     icon: Partnerstack,
   },
 ];
