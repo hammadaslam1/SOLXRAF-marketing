@@ -21,8 +21,11 @@ const Footer = () => {
           }}
         >
           <div style={{ flex: 6, padding: 5 }}>
-            <Typography variant="h4" fontSize={"clamp(1.5rem, 3vw, 2rem)"}>
-              It's Time to Pull in a{" "}
+            <Typography
+              // variant="h5"
+              fontSize={"clamp(1.2rem, 2.5vw, 1.8rem)"}
+              fontFamily="Krona One"
+            >
               <Typography
                 variant="h4"
                 sx={{
@@ -31,18 +34,20 @@ const Footer = () => {
                   fontFamily: "krona one",
                 }}
               >
-                Professional
+                SOLXRAF{" "}
               </Typography>
+              Your Sales Partner
             </Typography>
-            <Typography variant="h6" fontSize={"clamp(1.5rem, 1vw, 2rem)"}>
-              We are a forward-thinking agency specializing in digital marketing
-              and affiliate marketing solutions.
+            <Typography variant="h6" fontFamily={'Krona One'} letterSpacing={5} fontSize={"clamp(1.5rem, 1vw, 2rem)"}>
+              Let Us Fire up 🔥 your Sales
             </Typography>
           </div>
           <div style={{ flex: 5, padding: 5, display: "flex" }}>
             <div style={{ flex: 4, padding: 5 }}>
-              <Typography variant="h4">Menu</Typography>
-              <div>
+              <Typography variant="h4" fontFamily={"Krona One"}>
+                Menu
+              </Typography>
+              <div className="font-['Krona_One'] text-lg">
                 {navbarLinks.map((data, i) => (
                   <Link key={i} to={data.to} style={{ display: "block" }}>
                     {data.name}
@@ -51,11 +56,13 @@ const Footer = () => {
               </div>
             </div>
             <div style={{ flex: 5, padding: 5 }}>
-              <Typography variant="h4">Contact</Typography>
-              <Typography variant="h6">
+              <Typography variant="h4" fontFamily={"Krona One"}>
+                Contact
+              </Typography>
+              <Typography variant="body1" fontFamily={"Krona One"}>
                 <Link to={"mailto:info@solxraf.com"}>info@solxraf.com</Link>
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="body1" fontFamily={"Krona One"}>
                 <Link to={"tel:+923041395525"}>+ (92) 304 1395525</Link>
               </Typography>
               <div style={{ display: "flex" }}>
