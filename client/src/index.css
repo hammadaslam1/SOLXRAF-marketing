@@ -4,12 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
 
+/* * {
+  font-family: 'Krona Ona' !important;
+} */
+
 body {
   margin: 0;
   /* font-family: 'krona one'; */
-  font-family: BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: 'Krona One', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif !important;
+    sans-serif !important; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;

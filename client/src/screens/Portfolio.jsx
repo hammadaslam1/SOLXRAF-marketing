@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { Box, Typography } from "@mui/material";
 import { useEffect } from "react";
 import SERVICES from "../components/assets/backgrounds/textureBack.jpg";
+import "../styles/portfolioCSS.css";
+import PageHeading from "../components/navbars/PageHeading";
 
 const Portfolio = () => {
   useEffect(() => {
@@ -9,23 +12,37 @@ const Portfolio = () => {
   }, []);
   return (
     <div>
-      <Box
-        className="about-header"
-        sx={{
-          // backgroundImage: `url(${SERVICES})`,
-          // backgroundPosition: "center",
-          // backgroundSize: "cover",
-          // backgroundRepeat: "no-repeat",
-          // height: "67vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          // color: "#fff",
-          margin: "0",
-          padding: "0",
-        }}
-      >
-        <Typography fontSize="36px">Our Services</Typography>
+      <PageHeading>Our Services</PageHeading>
+      <Box className="about-body">
+        <div className="root">
+          <div style={{ height: "117px" }}>
+            <img
+              src={SERVICES}
+              width="360px"
+              style={{
+                boxShadow: "0px 15px 20px #0000006E",
+                borderRadius: "10px",
+              }}
+            />
+          </div>
+          <div
+            className="trapezoid"
+            style={{ height: "165px", width: "360px" }}
+          ></div>
+        </div>
+        <div style={{ flex: 1 }}></div>
+        <Box sx={{ flex: 3 }}>
+          <Typography>
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+            adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+          </Typography>
+        </Box>
       </Box>
     </div>
   );

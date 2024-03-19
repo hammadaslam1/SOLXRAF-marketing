@@ -1,0 +1,59 @@
+.about-body {
+    height: 67vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    padding: 100px 80px 40px 80px;
+}
+
+
+.root {
+    position: relative;
+    align-items: center;
+    flex: 1;
+    /* display: inline-block; */
+    /* background: #023d65; */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    /* height: 100%; */
+}
+
+.trapezoid {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #023d65;
+    z-index: -1;
+}
+
+
+.trapezoid:before {
+    content: " ";
+    display: block;
+    background: #023d65;
+    width: 40px;
+    height: 165px;
+    position: absolute;
+    top: 0;
+    left: -25px;
+    transform: skew(-6deg);
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.trapezoid:after {
+    content: " ";
+    display: block;
+    background: #023d65;
+    width: 40px;
+    height: 165px;
+    position: absolute;
+    top: 0;
+    right: -25px;
+    transform: skew(6deg);
+    border-radius: 8px;
+    z-index: -1;
+}

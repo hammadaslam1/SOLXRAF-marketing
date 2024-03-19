@@ -14,7 +14,12 @@ const Header = () => {
       }}
     >
       <div
-        style={{ width: "100%", height: "100%", backgroundColor: "#304FA1aa" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#304FA1aa",
+          position: "relative",
+        }}
       >
         <div className="flex flex-col  p-[20px] text-lg">
           <Typography
@@ -61,6 +66,17 @@ const Header = () => {
             Book Meeting
           </Button>
         </div>
+        <div
+          style={{
+            width: "50px",
+            height: "50px",
+            backgroundColor: "transparent",
+            borderRadius: "50%",
+            pointerEvents: 'none', /* Ensure the inner div doesn't capture mouse events */
+    // borderRadius: 'inherit',
+            zIndex: -3,
+          }}
+        ></div>
       </div>
     </Box>
   );
