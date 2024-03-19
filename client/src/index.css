@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+
+body {
+  margin: 0;
+  /* font-family: 'krona one'; */
+  font-family: BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* background-color: #304FA100; */
+
+}
+
+.home {
+  background-image: url('./components/assets/backgrounds/textureBack.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  /* position: fixed; */
+  /* right: 50px; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #304FA177;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #304FA1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #304FA1;
+}
