@@ -48,9 +48,10 @@ const ServiceCard = (props) => {
       </div>
       <div style={{ flex: 1 }}></div>
       <Box sx={{ flex: 3 }} data-aos={props.animateRight}>
-        <Typography>
-          {props.body}
+        <Typography variant="h5" sx={{ fontFamily: "Krona One" }}>
+          {props.heading}
         </Typography>
+        <Typography sx={{ textAlign: "justify" }}>{props.body}</Typography>
       </Box>
     </Box>
   );
