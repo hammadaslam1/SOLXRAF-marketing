@@ -5,7 +5,7 @@ import SERVICES from "../assets/backgrounds/textureBack.jpg";
 const ServiceCard = (props) => {
   return (
     <Box className={props.className}>
-      <div className="mainRoot">
+      <div className="mainRoot" data-aos={props.animateLeft}>
         <div className="root">
           <div style={{ height: "117px" }}>
             <div
@@ -33,6 +33,7 @@ const ServiceCard = (props) => {
                   backgroundColor: "#304FA1aa",
                   fontFamily: "Krona One",
                   fontSize: "1.5rem",
+                  textAlign: "center",
                 }}
               >
                 {props.title}
@@ -46,16 +47,9 @@ const ServiceCard = (props) => {
         </div>
       </div>
       <div style={{ flex: 1 }}></div>
-      <Box sx={{ flex: 3, border: "2px solid #f00" }}>
+      <Box sx={{ flex: 3 }} data-aos={props.animateRight}>
         <Typography>
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
-          adlkfja;lksdjf;alkdjf;lakdjsf;lakjsf;lakeoijflakdsgaoireutpgaoksfj;laksjf
+          {props.body}
         </Typography>
       </Box>
     </Box>

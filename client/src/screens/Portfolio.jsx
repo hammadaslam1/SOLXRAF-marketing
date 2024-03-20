@@ -14,7 +14,14 @@ const Portfolio = () => {
     <div>
       <PageHeading>Our Services</PageHeading>
       {servicesData.map((data, i) => (
-        <ServiceCard className={i % 2 === 0 ? "about-body" : "about-body-2"} title={data.title} />
+        <ServiceCard
+          className={i % 2 === 0 ? "about-body" : "about-body-2"}
+          title={data.title}
+          heading={data.heading}
+          body={data.body}
+          animateLeft={i % 2 === 0 ? "fade-right" : "fade-left"}
+          animateRight={i % 2 === 0 ? "fade-left" : "fade-right"}
+        />
       ))}
     </div>
   );

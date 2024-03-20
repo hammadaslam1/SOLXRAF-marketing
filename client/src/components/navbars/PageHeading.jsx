@@ -50,8 +50,34 @@ const PageHeading = (props) => {
           backgroundColor: "#304FA1",
           fontFamily: "Krona One",
           minWidth: "300px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
+        <div
+          style={{
+            width: "40%",
+            height: "6px",
+            // padding: "3px",
+            backgroundColor: "#fff",
+            borderBottomLeftRadius: "80%",
+            borderBottomRightRadius: "80%",
+            // position: "relative",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              // position: "absolute",
+              width: "20px",
+              height: "10px",
+              borderRadius: "50%",
+              backgroundColor: "#fff",
+            }}
+          ></div>
+        </div>
         {props.children}
       </Typography>
       <div

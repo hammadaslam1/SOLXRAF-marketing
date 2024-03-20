@@ -18,7 +18,7 @@
 .mainRoot {
     flex: 2;
     padding: 20px;
-    border: 2px solid #304FA1;
+    /* border: 2px solid #304FA1; */
     display: flex;
     justify-content: center;
     align-items: center;
