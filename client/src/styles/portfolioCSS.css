@@ -3,19 +3,36 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
     padding: 100px 80px 40px 80px;
 }
 
+.about-body-2 {
+    height: 67vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    padding: 100px 80px 40px 80px;
+}
+
+.mainRoot {
+    flex: 2;
+    padding: 20px;
+    border: 2px solid #304FA1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .root {
     position: relative;
     align-items: center;
     flex: 1;
+    /* border: 2px solid #304FA1; */
     /* display: inline-block; */
     /* background: #023d65; */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    /* border-top-left-radius: 8px; */
+    /* border-top-right-radius: 8px; */
     /* height: 100%; */
 }
 
@@ -25,7 +42,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    background-color: #023d65;
+    background-color: #304FA1;
     z-index: -1;
 }
 
@@ -33,7 +50,7 @@
 .trapezoid:before {
     content: " ";
     display: block;
-    background: #023d65;
+    background: #304FA1;
     width: 40px;
     height: 165px;
     position: absolute;
@@ -47,7 +64,7 @@
 .trapezoid:after {
     content: " ";
     display: block;
-    background: #023d65;
+    background: #304FA1;
     width: 40px;
     height: 165px;
     position: absolute;
