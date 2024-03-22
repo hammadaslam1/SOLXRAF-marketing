@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 // dotenv.config()
 
-// mongoose.connect(process.env.MONGODB_CON)
+// mongoose.connect(process.env.MONGO_COMPASS)
 
 mongoose.connect('mongodb://localhost:27017/solXraf', {
     useNewUrlParser: true,
