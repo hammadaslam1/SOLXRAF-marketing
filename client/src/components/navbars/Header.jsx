@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { HeaderCSS } from "./navbarCSS/HeaderCSS";
+import PrimaryButton from "../buttons/PrimaryButton";
 
 const Header = () => {
   return (
@@ -22,15 +23,13 @@ const Header = () => {
           </Typography>
         </div>
         <div style={HeaderCSS.btnDiv}>
-          <Button
-            variant="contained"
+          <PrimaryButton
+            sx={HeaderCSS.btn}
             href="https://calendly.com/solxraf-tech/30min"
             target="_blank"
-            sx={HeaderCSS.btn}
-            disableElevation
           >
             Book Meeting
-          </Button>
+          </PrimaryButton>
         </div>
       </div>
     </Box>

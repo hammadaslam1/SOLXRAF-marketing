@@ -2,6 +2,7 @@ export const NavButtonCSS = {
   link: {
     textDecoration: "none",
     color: "#fff",
+    fontFamily: "Krona One",
   },
   listItem: {
     listStyle: "none",

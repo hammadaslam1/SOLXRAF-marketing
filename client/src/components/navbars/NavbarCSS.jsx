@@ -14,4 +14,21 @@ export const NavbarCSS = {
     minWidth: "fit-content",
   },
   logoImage: { width: "clamp(100px, 25vw, 200px)", cursor: "pointer" },
+
+  authBtn: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "0.8rem",
+    height: "30px",
+    width: "100px",
+    padding: "0",
+    position: "relative",
+    borderBottomRightRadius: "50px",
+    borderTopRightRadius: "50px",
+    backgroundColor: "transparent",
+    color: "#FFFFFF",
+    border: "2px solid #fff",
+    fontweight: 500,
+  },
 };

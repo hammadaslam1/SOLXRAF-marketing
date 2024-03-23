@@ -1,14 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { AppBar, Box, IconButton, Toolbar } from "@mui/material";
+import { Avatar, Box, Toolbar } from "@mui/material";
 import LOGO from "../assets/logos/solxraf_navbar.png";
-import { navbarLinks, socialLinks } from "../../database/NavbarData";
+import { navbarLinks } from "../../database/NavbarData";
 import { NavbarCSS } from "./NavbarCSS";
 import NavButton from "../buttons/NavButton";
 import { useNavigate } from "react-router-dom";
 import { HOME } from "../../router/Router";
+import { useState } from "react";
+import PrimaryButton from "../buttons/PrimaryButton";
+import { HeaderCSS } from "./navbarCSS/HeaderCSS";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [login, setLogin] = useState("Login");
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 3 }}>
       <Box sx={NavbarCSS.appbar} elevation={0}>
@@ -32,11 +36,21 @@ const Navbar = () => {
             ))}
           </div>
           <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
-            {socialLinks.map((data, i) => (
-              <IconButton size="small" target="_blank" href={data.to}>
-                {data.icon}
-              </IconButton>
-            ))}
+            <PrimaryButton
+            className='loginBtn'
+              variant="outlined"
+              disableElevation
+              sx={[HeaderCSS.btn, NavbarCSS.authBtn]}
+              onClick={() =>
+                login === "Login" ? setLogin("Logout") : setLogin("Login")
+              }
+            >
+              <Avatar
+                className="avatar"
+                sx={HeaderCSS.avatar}
+              />
+              {login}
+            </PrimaryButton>
           </div>
         </Toolbar>
       </Box>

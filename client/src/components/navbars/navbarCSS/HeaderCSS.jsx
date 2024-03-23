@@ -24,13 +24,22 @@ export const HeaderCSS = {
     fontSize: "clamp(0.7rem, 1.8vw, 1.2rem)",
     color: "#304FA1",
     fontWeight: "bold",
-    border: "1px solid transparent",
+    border: "2px solid transparent",
     fontFamily: "Krona One",
     textTransform: "capitalize",
     "&:hover": {
       backgroundColor: "#304FA100",
       color: "#fff",
-      border: "1px solid #fff",
+      border: "2px solid #fff",
     },
+  },
+  avatar: {
+    position: "absolute",
+    left: -30,
+    backgroundColor: "#fff",
+    color: "#023d65",
+    "&:hover":{
+      right: -30,
+    }
   },
 };
