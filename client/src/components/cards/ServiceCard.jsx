@@ -11,6 +11,9 @@ const ServiceCard = (props) => {
             <div
               //   src={SERVICES}
               //   width="360px"
+              data-aos="flip-down"
+              data-aos-easing="linear"
+              data-aos-duration="500"
               style={{
                 boxShadow: "0px 15px 20px #0000006E",
                 borderRadius: "10px",

@@ -19,7 +19,7 @@ const Portfolio = () => {
           title={data.title}
           heading={data.heading}
           body={data.body}
-          animateLeft={i !== 0 && (i % 2 === 0 ? "fade-right" : "fade-left")}
+          animateLeft={i !== 0 && (i % 2 === 0 ? "" : "")}
           animateRight={i !== 0 && (i % 2 === 0 ? "fade-left" : "fade-right")}
         />
       ))}

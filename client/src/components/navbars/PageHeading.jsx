@@ -4,6 +4,7 @@ const PageHeading = (props) => {
   return (
     <Box
       className="about-header"
+      data-aos='fade-down'
       sx={{
         // backgroundImage: `url(${SERVICES})`,
         // backgroundPosition: "center",
