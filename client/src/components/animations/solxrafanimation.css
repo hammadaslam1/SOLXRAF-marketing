@@ -1,0 +1,44 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #023d65;
+} */
+
+/* Google chrome */
+@-webkit-keyframes svg-text-anim {
+    40% {
+        stroke-dashoffset: 0;
+        fill: #fff;
+    }
+
+    60% {
+        stroke-dashoffset: 0;
+        fill: #ffffff;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        fill: #fff;
+    }
+
+}
+
+/* Most browsers */
+@keyframes svg-text-anim {
+    40% {
+        stroke-dashoffset: 0;
+        fill: #fff;
+    }
+
+    60% {
+        stroke-dashoffset: 0;
+        fill: #fff;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        fill: #fff;
+    }
+
+}

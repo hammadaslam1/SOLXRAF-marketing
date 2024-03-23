@@ -1,5 +1,5 @@
 .about-body {
-    height: 67vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -7,7 +7,7 @@
 }
 
 .about-body-2 {
-    height: 67vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

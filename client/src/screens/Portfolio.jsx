@@ -13,6 +13,10 @@ const Portfolio = () => {
   return (
     <div>
       <PageHeading>Our Services</PageHeading>
+
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
+        <SolxrafAnimation />
+      </div> */}
       {servicesData.map((data, i) => (
         <ServiceCard
           className={i % 2 === 0 ? "about-body" : "about-body-2"}

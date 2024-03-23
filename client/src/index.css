@@ -4,9 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
 
-/* * {
-  font-family: 'Krona Ona' !important;
-} */
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;

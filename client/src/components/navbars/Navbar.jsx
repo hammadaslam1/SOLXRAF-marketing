@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Avatar, Box, Toolbar } from "@mui/material";
-import LOGO from "../assets/logos/solxraf_navbar.png";
+import LOGO from "../assets/logos/solxraf01.png";
 import { navbarLinks } from "../../database/NavbarData";
 import { NavbarCSS } from "./NavbarCSS";
 import NavButton from "../buttons/NavButton";
@@ -9,6 +9,7 @@ import { HOME } from "../../router/Router";
 import { useState } from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { HeaderCSS } from "./navbarCSS/HeaderCSS";
+import SolxrafAnimation from "../animations/SolxrafAnimation";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const Navbar = () => {
               style={NavbarCSS.logoImage}
               onClick={() => navigate(HOME)}
             />
+            <SolxrafAnimation />
           </div>
           <div style={{ flex: 4, display: "flex", justifyContent: "center" }}>
             {navbarLinks.map((data, i) => (
@@ -35,9 +37,9 @@ const Navbar = () => {
               />
             ))}
           </div>
-          <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+          <div style={{ flex: 2, display: "flex", justifyContent: "right" }}>
             <PrimaryButton
-            className='loginBtn'
+              className="loginBtn"
               variant="outlined"
               disableElevation
               sx={[HeaderCSS.btn, NavbarCSS.authBtn]}
@@ -45,10 +47,7 @@ const Navbar = () => {
                 login === "Login" ? setLogin("Logout") : setLogin("Login")
               }
             >
-              <Avatar
-                className="avatar"
-                sx={HeaderCSS.avatar}
-              />
+              <Avatar className="avatar" sx={HeaderCSS.avatar} />
               {login}
             </PrimaryButton>
           </div>

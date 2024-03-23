@@ -1,19 +1,19 @@
 export const NavbarCSS = {
   appbar: {
     backgroundColor: "#304FA1",
-    px: "50px",
+    px: "20px",
     position: "sticky",
     top: 0,
   },
 
   image: {
-    flex: 1,
+    flex: 2,
     display: "flex",
     alignItems: "center",
     height: "100px",
     minWidth: "fit-content",
   },
-  logoImage: { width: "clamp(100px, 25vw, 200px)", cursor: "pointer" },
+  logoImage: { width: "clamp(25px, 10vw, 60px)", cursor: "pointer", marginright: "5px"},
 
   authBtn: {
     display: "flex",
