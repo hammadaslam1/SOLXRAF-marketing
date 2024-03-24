@@ -1,20 +1,32 @@
 // import { Input } from "@mui/joy";
 
-import { Input } from "@mui/material";
+import {
+  FormControl,
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from "@mui/material";
 
-const LoginInput = ({ sx = {}, ...props }) => {
+const LoginInput = ({ ...props }) => {
   return (
-    <Input
-      variant="plain"
+    <FormControl
+      variant="outlined"
       sx={{
-        backgroundColor: "#f8f8f8",
         marginY: "10px",
         borderRadius: "8px",
-        padding: "8px 12px",
-        ...sx,
+        width: "100%",
       }}
-      {...props}
-    />
+    >
+      <InputLabel htmlFor="input-with-icon-adornment">{props.label}</InputLabel>
+      <OutlinedInput
+        id="input-with-icon-adornment"
+        sx={{
+          backgroundColor: "#f8f8f8",
+        }}
+        {...props}
+      />
+    </FormControl>
   );
 };
 

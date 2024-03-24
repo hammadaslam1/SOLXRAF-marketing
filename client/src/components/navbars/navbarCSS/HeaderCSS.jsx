@@ -31,13 +31,14 @@ export const HeaderCSS = {
       backgroundColor: "#304FA100",
       color: "#fff",
       border: "2px solid #fff",
+      float: "right",
     },
   },
   avatar: {
     position: "absolute",
     left: -30,
     backgroundColor: "#fff",
-    color: "#023d65",
+    color: "#304FA1",
     "&:hover":{
       right: -30,
     }
