@@ -1,4 +1,5 @@
-import { Box, Card, CardMedia, Typography } from "@mui/material";
+import { Box, Card, CardMedia } from "@mui/material";
+import { Typography } from "@mui/material";
 import LoginInput from "../components/inputs/LoginInput";
 import { Mail } from "@mui/icons-material";
 
