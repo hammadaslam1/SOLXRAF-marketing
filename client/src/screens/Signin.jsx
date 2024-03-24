@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, IconButton } from "@mui/material";
+import { Box, Button, Card, CardMedia, IconButton } from "@mui/material";
 import { Typography } from "@mui/material";
 import LoginInput from "../components/inputs/LoginInput";
 import { Mail } from "@mui/icons-material";
@@ -11,11 +11,14 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import { HeaderCSS } from "../components/navbars/navbarCSS/HeaderCSS";
+import { SIGNUP } from "../router/Router";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <PageHeading>Login</PageHeading>
@@ -78,6 +81,33 @@ const Signin = () => {
                 Login
               </PrimaryButton>
             </Card>
+          </Box>
+          <div style={SigninCSS.divider}></div>
+          <Box sx={SigninCSS.loginBox}>
+            <Typography
+              variant="body2"
+              sx={{ fontFamily: "Krona One", color: "#304fa1cc" }}
+            >
+              Not have an account?{" "}
+              <PrimaryButton
+                sx={[
+                  SigninCSS.loginBtn,
+                  {
+                    fontSize: "1rem",
+                    height: "fit-content",
+                    p: 0,
+                    width: "unset",
+                    m: 0,
+                    backgroundColor: "#fff",
+                    color: "#304fa1",
+                    px: 2,
+                  },
+                ]}
+                onClick={() => navigate(SIGNUP)}
+              >
+                Signup
+              </PrimaryButton>
+            </Typography>
           </Box>
         </div>
       </Box>

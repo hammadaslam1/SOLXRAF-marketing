@@ -35,7 +35,16 @@ export const SigninCSS = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    // borderBottom: "1px solid #304fa1",
+    // pb: 3,
     // padding: 15
+  },
+  divider:{
+    width: "50%",
+    height: "2px",
+    backgroundColor: "#304fa1",
+    marginTop: '20px',
+    marginBottom: '20px',
   },
   loginCard: {
     display: "flex",
@@ -65,12 +74,13 @@ export const SigninCSS = {
     mb: 4,
   },
   loginBtn: {
-    fontSize: "clamp(0.8rem, 1.7vw, 1.5rem)",
+    fontSize: "clamp(0.6rem, 1.4vw, 1.3rem)",
     fontFamily: "Krona One",
-    fontWeight: 600,
+    // fontWeight: 500,
     color: "#fff",
     width: "clamp(80px, 20vw, 160px)",
     height: "clamp(35px, 7vw, 50px)",
+    mt: 3,
     borderRadius: "5px",
     border: "2px solid #304FA1",
     cursor: "pointer",

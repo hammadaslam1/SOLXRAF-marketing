@@ -23,6 +23,7 @@ const LoginInput = ({ ...props }) => {
         id="input-with-icon-adornment"
         sx={{
           backgroundColor: "#f8f8f8",
+          color: '#304fa1'
         }}
         {...props}
       />
