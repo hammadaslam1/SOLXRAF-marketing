@@ -1,4 +1,6 @@
 export const HOME = "/";
-export const PORTFOLIO = "/portfolio";
+export const SERVICES = "/services";
 export const BLOGS = "/blogs";
 export const CONTACT = "/contact";
+export const SIGNIN = "/signin";
+export const SIGNUP = "/signup";

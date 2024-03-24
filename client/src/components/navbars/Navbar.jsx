@@ -5,8 +5,8 @@ import { navbarLinks } from "../../database/NavbarData";
 import { NavbarCSS } from "./NavbarCSS";
 import NavButton from "../buttons/NavButton";
 import { useNavigate } from "react-router-dom";
-import { HOME } from "../../router/Router";
-import { useState } from "react";
+import { HOME, SIGNIN } from "../../router/Router";
+import { useEffect, useState } from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { HeaderCSS } from "./navbarCSS/HeaderCSS";
 import SolxrafAnimation from "../animations/SolxrafAnimation";
@@ -14,8 +14,38 @@ import SolxrafAnimation from "../animations/SolxrafAnimation";
 const Navbar = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState("Login");
+
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isVisible = prevScrollPos > currentScrollPos;
+
+      setPrevScrollPos(currentScrollPos);
+      setVisible(isVisible);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
+
   return (
-    <div style={{ position: "sticky", top: 0, zIndex: 3 }}>
+    <nav
+      id="navbar"
+      style={{
+        position: "sticky",
+        // top: 0,
+        width: "100%",
+        transition: "top 0.3s",
+        zIndex: 1000,
+        backgroundColor: "white",
+        // Adjust other styles as needed
+        top: visible ? "0" : "-100px", // Adjust the offset to hide the navbar completely
+      }}
+    >
       <Box sx={NavbarCSS.appbar} elevation={0}>
         <Toolbar>
           <div style={NavbarCSS.image}>
@@ -43,9 +73,7 @@ const Navbar = () => {
               variant="outlined"
               disableElevation
               sx={[HeaderCSS.btn, NavbarCSS.authBtn]}
-              onClick={() =>
-                login === "Login" ? setLogin("Logout") : setLogin("Login")
-              }
+              onClick={() => navigate(SIGNIN)}
             >
               <Avatar className="avatar" sx={HeaderCSS.avatar} />
               {login}
@@ -53,7 +81,7 @@ const Navbar = () => {
           </div>
         </Toolbar>
       </Box>
-    </div>
+    </nav>
   );
 };
 

@@ -1,12 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { BLOGS, CONTACT, HOME, PORTFOLIO } from "./Router";
+import { BLOGS, CONTACT, HOME, SERVICES, SIGNIN, SIGNUP } from "./Router";
 import Home from "../screens/Home";
-import Portfolio from "../screens/Portfolio";
 import Blogs from "../screens/Blogs";
 import Contact from "../screens/Contact";
 import Navbar from "../components/navbars/Navbar";
 import "../styles/global.css";
 import Footer from "../components/navbars/Footer";
+import Signin from "../screens/Signin";
+import Signup from "../screens/Signup";
+import Services from "../screens/Services";
 
 const Navigation = () => {
   return (
@@ -15,7 +17,9 @@ const Navigation = () => {
         <Navbar />
         <Routes>
           <Route exact path={HOME} element={<Home />} />
-          <Route path={PORTFOLIO} element={<Portfolio />} />
+          <Route path={SIGNIN} element={<Signin />} />
+          <Route path={SIGNUP} element={<Signup />} />
+          <Route path={SERVICES} element={<Services />} />
           <Route path={BLOGS} element={<Blogs />} />
           <Route path={CONTACT} element={<Contact />} />
         </Routes>

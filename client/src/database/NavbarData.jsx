@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { BLOGS, CONTACT, HOME, PORTFOLIO } from "../router/Router";
+import { BLOGS, CONTACT, HOME, SERVICES } from "../router/Router";
 import AWIN from "../components/assets/icons/svgs/Awin.svg";
 // import RAKUTEN from "../components/assets/icons/svgs/Rakuten.svg";
 import SHAREASALE from "../components/assets/icons/svgs/ShareASale.svg";
@@ -47,7 +47,7 @@ export const navbarLinks = [
     onClick: () => console.log("pressed"),
   },
   {
-    to: PORTFOLIO,
+    to: SERVICES,
     name: "Our Services",
     onClick: () => console.log("pressed"),
   },

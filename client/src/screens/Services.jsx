@@ -5,7 +5,7 @@ import PageHeading from "../components/navbars/PageHeading";
 import ServiceCard from "../components/cards/ServiceCard";
 import { servicesData } from "../database/ServicesData";
 
-const Portfolio = () => {
+const Services = () => {
   useEffect(() => {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
@@ -13,10 +13,6 @@ const Portfolio = () => {
   return (
     <div>
       <PageHeading>Our Services</PageHeading>
-
-      {/* <div style={{ display: "flex", justifyContent: "center" }}>
-        <SolxrafAnimation />
-      </div> */}
       {servicesData.map((data, i) => (
         <ServiceCard
           className={i % 2 === 0 ? "about-body" : "about-body-2"}
@@ -31,4 +27,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Services;
