@@ -8,7 +8,7 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
-const ContactInput = ({ ...props }) => {
+const ContactInput = ({ sx = {}, ...props }) => {
   return (
     <FormControl
       variant="outlined"
@@ -17,14 +17,22 @@ const ContactInput = ({ ...props }) => {
         borderRadius: "8px",
         //   width: "100%",
         // display: "inline-block",
+        ...sx,
       }}
+      required={props.required}
     >
-      <InputLabel htmlFor="input-with-icon-adornment">{props.label}</InputLabel>
+      <InputLabel
+        htmlFor="input-with-icon-adornment"
+        sx={{ fontFamily: "Krona One", fontSize: "0.9rem" }}
+      >
+        {props.label}
+      </InputLabel>
       <OutlinedInput
         id="input-with-icon-adornment"
         sx={{
           backgroundColor: "#f8f8f8",
           color: "#304fa1",
+          fontFamily: "Krona One",
         }}
         {...props}
       />

@@ -22,23 +22,28 @@ const Footer = () => {
         >
           <div style={{ flex: 6, padding: 5 }}>
             <Typography
-              // variant="h5"
-              fontSize={"clamp(1.2rem, 2.5vw, 1.8rem)"}
+              variant="h5"
+              fontSize={"clamp(1.3rem, 2.7vw, 2rem)"}
               fontFamily="Krona One"
             >
+              SOLXRAF{" "}
               <Typography
-                variant="h4"
+                variant="h6"
                 sx={{
                   display: "inline",
-                  fontWeight: 600,
+                  // fontWeight: 600,
                   fontFamily: "krona one",
                 }}
               >
-                SOLXRAF{" "}
+                Your Sales Partner
               </Typography>
-              Your Sales Partner
             </Typography>
-            <Typography variant="h6" fontFamily={'Krona One'} letterSpacing={5} fontSize={"clamp(1.5rem, 1vw, 2rem)"}>
+            <Typography
+              variant="h6"
+              fontFamily={"Krona One"}
+              letterSpacing={5}
+              // fontSize={"clamp(1.5rem, 1vw, 2rem)"}
+            >
               Let Us Fire up 🔥 your Sales
             </Typography>
           </div>

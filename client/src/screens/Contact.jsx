@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import PageHeading from "../components/navbars/PageHeading";
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { ContactCSS } from "../styles/ContactCSS";
 import IMAGE from "../components/assets/logos/title_icon.png";
 import LoginInput from "../components/inputs/LoginInput";
 import ContactInput from "../components/inputs/ContactInput";
+import PrimaryButton from "../components/buttons/PrimaryButton";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -92,53 +93,88 @@ const Contact = () => {
   ];
   useEffect(() => {
     // Scroll to the top when the component mounts
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, []);
   return (
     <div>
-      <PageHeading>Contact Us</PageHeading>
+      {/* <PageHeading>Contact Us</PageHeading> */}
       <Card sx={ContactCSS.main} elevation={5}>
         <Box sx={ContactCSS.left}>
-          <Typography variant="h5">Let's Get In Touch</Typography>
-          <Typography variant="body2">
-            For any query WhatsApp or call us at 0092 304 1395525 or email us at
+          <Typography
+            variant="h5"
+            sx={[ContactCSS.font, { color: "#fff", fontWeight: "500" }]}
+          >
+            Let's Get In Touch
+          </Typography>
+          <Typography variant="body2" sx={ContactCSS.font}>
+            For any query WhatsApp or call us at 0092-304-1395525 or email us at
             info@solxraf.com
           </Typography>
-          <Box>
-            <span>
-              <PlaceIcon />
+          <Box sx={ContactCSS.leftBox}>
+            <span style={ContactCSS.iconSpan}>
+              <PlaceIcon sx={{ fontSize: "1.5rem" }} />
             </span>
-            <Typography variant="body2">
+            <Typography variant="body1" sx={[ContactCSS.font, { flex: 5 }]}>
               Address:{" "}
-              <span>
+              <Typography
+                variant="body2"
+                sx={[ContactCSS.font, { my: 0, mx: 1.5 }]}
+              >
                 Alkhidmat House # B-39, street # 6 Sikandar Town GT Road
                 Peshawar
-              </span>
+              </Typography>
             </Typography>
           </Box>
-          <Box>
-            <span>
-              <PhoneIcon sx={{ fontSize: "2rem" }} />
+          <Box sx={ContactCSS.leftBox}>
+            <span style={ContactCSS.iconSpan}>
+              <PhoneIcon sx={{ fontSize: "1.5rem" }} />
             </span>
-            <Typography variant="body2">
+            <Typography
+              variant="body1"
+              sx={[ContactCSS.font, { flex: 5, textAlign: "justify" }]}
+            >
               Phone:{" "}
-              <span>
-                Alkhidmat House # B-39, street # 6 Sikandar Town GT Road
-                Peshawar
-              </span>
+              <Typography
+                variant="body2"
+                sx={[
+                  ContactCSS.font,
+                  {
+                    fontWeight: "500",
+                    mx: 1.5,
+                    textDecoration: "underline",
+                  },
+                ]}
+              >
+                0092-304-1395525
+              </Typography>
             </Typography>
-            <Typography variant="body2">
+            <Typography
+              variant="body1"
+              sx={[ContactCSS.font, { flex: 5, textAlign: "justify" }]}
+            >
               WhatsApp:{" "}
-              <span>
-                Alkhidmat House # B-39, street # 6 Sikandar Town GT Road
-                Peshawar
-              </span>
+              <Typography
+                variant="body2"
+                sx={[
+                  ContactCSS.font,
+                  {
+                    fontWeight: "500",
+                    mx: 1.5,
+                    textDecoration: "underline",
+                  },
+                ]}
+              >
+                0092-304-1395525
+              </Typography>
             </Typography>
           </Box>
         </Box>
         <Box sx={ContactCSS.right}>
           <div style={{ width: "fit-content" }}>
-            <Typography variant="h5" sx={[ContactCSS.font]}>
+            <Typography
+              variant="h5"
+              sx={[ContactCSS.font, { color: "#555", fontWeight: "bold" }]}
+            >
               CONTACT{" "}
               <span style={{ color: "#304fa1", fontFamily: "Krona One" }}>
                 US
@@ -154,6 +190,7 @@ const Contact = () => {
             <div style={ContactCSS.fields}>
               {fields.map((data, i) => (
                 <ContactInput
+                  key={i}
                   type={data.type}
                   value={data.value}
                   label={data.label}
@@ -161,9 +198,25 @@ const Contact = () => {
                   onChange={data.onChange}
                   startAdornment={data.startAdornment}
                   placeholder={data.placeholder}
+                  required={data.required}
                 />
               ))}
+              <ContactInput
+                label="About me"
+                placeholder="I'm a ..."
+                // color="error"
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
+                multiline={true}
+                sx={ContactCSS.textField}
+                // required
+              />
             </div>
+          </div>
+          <div style={ContactCSS.fieldDiv}>
+            <Button variant="contained" sx={ContactCSS.button} disableElevation>
+              Submit
+            </Button>
           </div>
         </Box>
       </Card>
