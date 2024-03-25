@@ -8,14 +8,14 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
-const LoginInput = ({ ...props }) => {
+const ContactInput = ({ ...props }) => {
   return (
     <FormControl
       variant="outlined"
       sx={{
-        marginY: "10px",
+        margin: "10px",
         borderRadius: "8px",
-        width: "100%",
+        //   width: "100%",
         // display: "inline-block",
       }}
     >
@@ -32,4 +32,4 @@ const LoginInput = ({ ...props }) => {
   );
 };
 
-export default LoginInput;
+export default ContactInput;
