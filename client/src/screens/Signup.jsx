@@ -1,4 +1,4 @@
-import { Box, Card, IconButton } from "@mui/material";
+import { Alert, Box, Card, IconButton } from "@mui/material";
 import { Typography } from "@mui/material";
 import LoginInput from "../components/inputs/LoginInput";
 import { Mail } from "@mui/icons-material";
@@ -18,8 +18,34 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const handleSubmit = async () => {
+    try {
+      if (!name || !password || !email) {
+        return setError("Please fill all required fields!");
+      }
+      const res = await fetch("http://localhost:3001/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      });
+      const data = await res.json();
+      if (data.success === false){
+        return setError(data.message);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   return (
     <>
       <PageHeading>Signup</PageHeading>
@@ -44,13 +70,14 @@ const Signup = () => {
               <Typography variant="h4" sx={SigninCSS.loginTitle}>
                 Signup
               </Typography>
+
               <LoginInput
                 type="text"
                 value={name}
                 label="Name"
                 onChange={(e) => {
                   setName(e.target.value);
-                  // setIsFilled(false);
+                  setError(null);
                 }}
                 startAdornment={<PersonIcon sx={{ color: "#304fa1", mr: 2 }} />}
                 placeholder="John Doe"
@@ -60,8 +87,8 @@ const Signup = () => {
                 value={email}
                 label="Email"
                 onChange={(e) => {
-                  setEmail(e.target.value);
-                  // setIsFilled(false);
+                  setEmail(e.target.value.trim());
+                  setError(null);
                 }}
                 startAdornment={<Mail sx={{ color: "#304fa1", mr: 2 }} />}
                 placeholder="example@email.com"
@@ -71,8 +98,8 @@ const Signup = () => {
                 value={password}
                 label="Password"
                 onChange={(e) => {
-                  setPassword(e.target.value);
-                  // setIsFilled(false);
+                  setPassword(e.target.value.trim());
+                  setError(null);
                 }}
                 startAdornment={<KeyIcon sx={{ color: "#304fa1", mr: 2 }} />}
                 endAdornment={
@@ -86,9 +113,14 @@ const Signup = () => {
                 }
                 placeholder={!showPassword ? "xxxxxxxx" : "password"}
               />
+              {error && (
+                <Alert variant="filled" severity="error" sx={{ width: "100%" }}>
+                  {error}
+                </Alert>
+              )}
               <PrimaryButton
                 sx={SigninCSS.loginBtn}
-                onClick={() => alert("signup pressed")}
+                onClick={() => handleSubmit()}
               >
                 Signup
               </PrimaryButton>

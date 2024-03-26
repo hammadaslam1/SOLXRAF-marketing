@@ -39,12 +39,12 @@ export const SigninCSS = {
     // pb: 3,
     // padding: 15
   },
-  divider:{
+  divider: {
     width: "50%",
     height: "2px",
     backgroundColor: "#304fa1",
-    marginTop: '20px',
-    marginBottom: '20px',
+    marginTop: "20px",
+    marginBottom: "20px",
   },
   loginCard: {
     display: "flex",
@@ -89,6 +89,25 @@ export const SigninCSS = {
     "&:hover": {
       backgroundColor: "#fff",
       color: "#304FA1",
+    },
+  },
+  googleBtn: {
+    // fontSize: "clamp(0.6rem, 1.4vw, 1.3rem)",
+    fontFamily: "Krona One",
+    // fontWeight: 500,
+    color: "#fff",
+    width: "fit-content",
+    // height: "clamp(35px, 7vw, 50px)",
+    // mt: 3,
+    borderRadius: "5px",
+    border: "2px solid #304FA1",
+    cursor: "pointer",
+    textTransform: "capitalize",
+    backgroundColor: "#fff",
+    color: "#304fa1",
+    "&:hover": {
+      backgroundColor: "#304fa1",
+      color: "#fff",
     },
   },
 };

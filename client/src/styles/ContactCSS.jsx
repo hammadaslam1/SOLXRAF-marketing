@@ -15,13 +15,14 @@ export const ContactCSS = {
     color: "#fff",
     lineHeight: 3,
     fontFamily: "Krona One",
+    minWidth: "250px",
   },
   right: {
     flex: 2,
     padding: 5,
     lineHeight: 3,
     fontFamily: "Krona One",
-    minWidth: '400px'
+    minWidth: "400px",
   },
   font: {
     fontFamily: "Krona One",
@@ -62,12 +63,14 @@ export const ContactCSS = {
     backgroundColor: "#f8f8f8",
     color: "#304fa1",
     fontFamily: "Krona One",
+    minWidth: "300px",
   },
   textField: {
     flex: "1 1 auto",
     margin: "10px",
     backgroundColor: "#f8f8f8",
     color: "#304fa1",
+    minWidth: "300px",
   },
   button: {
     marginX: "10px",
@@ -89,6 +92,7 @@ export const ContactCSS = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    flexWrap: "wrap",
   },
   iconSpan: {
     width: "50px",

@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardMedia, IconButton } from "@mui/material";
+import { Box, Button, Card, IconButton } from "@mui/material";
 import { Typography } from "@mui/material";
 import LoginInput from "../components/inputs/LoginInput";
 import { Mail } from "@mui/icons-material";
@@ -10,15 +10,36 @@ import KeyIcon from "@mui/icons-material/Key";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-import { HeaderCSS } from "../components/navbars/navbarCSS/HeaderCSS";
 import { SIGNUP } from "../router/Router";
 import { useNavigate } from "react-router-dom";
+import GoogleIcon from "@mui/icons-material/Google";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({});
   const navigate = useNavigate();
+  const handleSubmit = async () => {
+    setFormData({
+      email: email,
+      password: password,
+    });
+    try {
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
   return (
     <>
       <PageHeading>Login</PageHeading>
@@ -109,6 +130,25 @@ const Signin = () => {
               </PrimaryButton>
             </Typography>
           </Box>
+          <div
+            style={{
+              textAlign: "center",
+              fontFamily: "Krona One",
+              color: "#304fa1",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+            OR
+          </div>
+          <Button
+            variant="contained"
+            sx={SigninCSS.googleBtn}
+            startIcon={<GoogleIcon sx={{ fontSize: "2rem" }} />}
+            disableElevation
+          >
+            Continue with Google
+          </Button>
         </div>
       </Box>
     </>
