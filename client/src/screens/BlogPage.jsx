@@ -6,7 +6,7 @@ import { BlogCSS } from "../styles/BlogCSS";
 const BlogPage = (props) => {
   return (
     <div>
-      <PageHeading>Blog</PageHeading>
+      {/* <PageHeading>Blog</PageHeading> */}
       <Card sx={BlogCSS.mainBox} elevation={5}>
         <Box sx={BlogCSS.title}>
           <Typography variant="h4" sx={BlogCSS.font}>

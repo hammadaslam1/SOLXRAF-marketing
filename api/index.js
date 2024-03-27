@@ -6,6 +6,7 @@ import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import postRoutes from './routes/post.route.js';
 import commentRoutes from './routes/comment.route.js';
+import { MONGODB } from '../ENV.js'
 // import cookieParser from 'cookie-parser';
 import path from 'path';
 
@@ -14,10 +15,10 @@ dotenv.config();
 
 
 mongoose
-    .connect('mongodb+srv://hammadaslam10:Hammad%40308@solxraf.mob7c4u.mongodb.net/solxraf', {
+    .connect(MONGODB, {
         useNewUrlParser: true,
         useUnifiedTopology: true
-    }).then(() => console.log('connected')).catch(() => console.log('failed to connect')).finally(() => console.log('start'));
+    }).then(() => console.log('connected')).catch((e) => console.log(e)).finally(() => console.log('start'));
 
 const __dirname = path.resolve();
 

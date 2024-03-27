@@ -42,6 +42,9 @@ const Signup = () => {
       if (data.success === false){
         return setError(data.message);
       }
+      if (res.ok){
+        navigate(SIGNIN);
+      }
     } catch (error) {
       setError(error.message);
     }

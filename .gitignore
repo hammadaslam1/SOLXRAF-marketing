@@ -13,6 +13,7 @@
 /node_modules
 # /api
 # misc
+ENV.js
 .DS_Store
 .env.local
 .env
