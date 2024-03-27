@@ -1,18 +1,24 @@
 .about-body {
-    height: 60vh;
+    /* height: 60vh; */
+    padding-top: 50px;
+    padding-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 100px 80px 40px 80px;
+    /* border: 3px solid #304fa1; */
 }
 
 .about-body-2 {
-    height: 60vh;
+    /* height: 60vh; */
+    padding-top: 50px;
+    padding-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row-reverse;
     padding: 100px 80px 40px 80px;
+    /* border: 3px solid #304fa1; */
 }
 
 .mainRoot {

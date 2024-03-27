@@ -97,7 +97,7 @@ const Contact = () => {
   }, []);
   return (
     <div>
-      {/* <PageHeading>Contact Us</PageHeading> */}
+      <PageHeading>Contact Us</PageHeading>
       <Card sx={ContactCSS.main} elevation={5}>
         <Box sx={ContactCSS.left}>
           <Typography

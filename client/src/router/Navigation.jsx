@@ -1,5 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { BLOGS, CONTACT, HOME, SERVICES, SIGNIN, SIGNUP } from "./Router";
+import {
+  BLOGPAGE,
+  BLOGS,
+  CONTACT,
+  HOME,
+  SERVICES,
+  SIGNIN,
+  SIGNUP,
+} from "./Router";
 import Home from "../screens/Home";
 import Blogs from "../screens/Blogs";
 import Contact from "../screens/Contact";
@@ -9,6 +17,7 @@ import Footer from "../components/navbars/Footer";
 import Signin from "../screens/Signin";
 import Signup from "../screens/Signup";
 import Services from "../screens/Services";
+import BlogPage from "../screens/BlogPage";
 
 const Navigation = () => {
   return (
@@ -22,6 +31,7 @@ const Navigation = () => {
           <Route path={SERVICES} element={<Services />} />
           <Route path={BLOGS} element={<Blogs />} />
           <Route path={CONTACT} element={<Contact />} />
+          <Route path={BLOGPAGE} element={<BlogPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

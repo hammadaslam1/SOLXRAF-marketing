@@ -57,3 +57,12 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #304FA1;
 }
+
+.parent .child {
+  transition: all 0.5s ease-in-out;
+}
+
+.parent:hover .child {
+  transform: scale(1.15);
+  /* transition: all 0.5s ease-in-out; */
+}

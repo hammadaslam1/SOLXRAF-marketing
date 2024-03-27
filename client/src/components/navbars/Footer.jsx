@@ -72,7 +72,7 @@ const Footer = () => {
               </Typography>
               <div style={{ display: "flex" }}>
                 {socialLinks.map((data, i) => (
-                  <IconButton size="small">{data.icon}</IconButton>
+                  <IconButton size="small" href={data.to} target="_blank">{data.icon}</IconButton>
                 ))}
               </div>
             </div>

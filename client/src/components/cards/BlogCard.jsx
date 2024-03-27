@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,11 +5,14 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import { Typography } from "@mui/material";
 import PIC from "../assets/backgrounds/textureBack.jpg";
+import { useNavigate } from "react-router-dom";
+import { BLOGPAGE } from "../../router/Router";
 
 const BlogCard = () => {
+  const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate(BLOGPAGE)}>
         <CardMedia
           component="img"
           height="140"
