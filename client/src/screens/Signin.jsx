@@ -1,4 +1,4 @@
-import { Box, Button, Card, IconButton } from "@mui/material";
+import { Alert, Box, Button, Card, IconButton } from "@mui/material";
 import { Typography } from "@mui/material";
 import LoginInput from "../components/inputs/LoginInput";
 import { Mail } from "@mui/icons-material";
@@ -10,7 +10,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-import { SIGNUP } from "../router/Router";
+import { HOME, SIGNUP } from "../router/Router";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -19,14 +19,11 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({});
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = async () => {
-    setFormData({
-      email: email,
-      password: password,
-    });
     try {
-      const res = await fetch("/api/auth/signin", {
+      const res = await fetch("http://localhost:3001/api/auth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,8 +33,15 @@ const Signin = () => {
           password: password,
         }),
       });
+      const data = await res.json();
+      if (data.success === false) {
+        return setError(data.message);
+      }
+      if (res.ok) {
+        navigate(HOME);
+      }
     } catch (error) {
-      alert(error);
+      setError(error.message);
     }
   };
   return (
@@ -95,9 +99,10 @@ const Signin = () => {
                 }
                 placeholder={!showPassword ? "xxxxxxxx" : "password"}
               />
+              {error && <Alert>{error}</Alert>}
               <PrimaryButton
                 sx={SigninCSS.loginBtn}
-                onClick={() => alert("login pressed")}
+                onClick={() => handleSubmit()}
               >
                 Login
               </PrimaryButton>
