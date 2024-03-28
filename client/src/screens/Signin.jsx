@@ -1,4 +1,12 @@
-import { Alert, Box, Button, Card, IconButton } from "@mui/material";
+import {
+  Alert,
+  Backdrop,
+  Box,
+  Button,
+  Card,
+  CircularProgress,
+  IconButton,
+} from "@mui/material";
 import { Typography } from "@mui/material";
 import LoginInput from "../components/inputs/LoginInput";
 import { Mail } from "@mui/icons-material";
@@ -15,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 
 const Signin = () => {
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -23,6 +32,13 @@ const Signin = () => {
   const navigate = useNavigate();
   const handleSubmit = async () => {
     try {
+      const emailRegex =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      setOpen(true);
+      if (!emailRegex.test(email)) {
+        setOpen(false);
+        return setError("Please enter a valid email address!");
+      }
       const res = await fetch("http://localhost:3001/api/auth/signin", {
         method: "POST",
         headers: {
@@ -35,18 +51,28 @@ const Signin = () => {
       });
       const data = await res.json();
       if (data.success === false) {
+        setOpen(false);
         return setError(data.message);
       }
       if (res.ok) {
+        setOpen(false);
         navigate(HOME);
       }
     } catch (error) {
+      setOpen(false);
       setError(error.message);
     }
   };
   return (
-    <>
+    <div onKeyDown={(e) => e.key === "Enter" && handleSubmit()}>
       <PageHeading>Login</PageHeading>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={() => setOpen(false)}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Box sx={{ display: "flex", paddingY: 5, paddingX: 2, flexWrap: "wrap" }}>
         <div style={SigninCSS.left}>
           <Box sx={SigninCSS.imageBox}>
@@ -74,7 +100,7 @@ const Signin = () => {
                 label="Email"
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  // setIsFilled(false);
+                  setError(null);
                 }}
                 startAdornment={<Mail sx={{ color: "#304fa1", mr: 2 }} />}
                 placeholder="example@email.com"
@@ -85,7 +111,7 @@ const Signin = () => {
                 label="Password"
                 onChange={(e) => {
                   setPassword(e.target.value);
-                  // setIsFilled(false);
+                  setError(null);
                 }}
                 startAdornment={<KeyIcon sx={{ color: "#304fa1", mr: 2 }} />}
                 endAdornment={
@@ -99,7 +125,11 @@ const Signin = () => {
                 }
                 placeholder={!showPassword ? "xxxxxxxx" : "password"}
               />
-              {error && <Alert>{error}</Alert>}
+              {error && (
+                <Alert variant="filled" severity="error" sx={{ width: "100%" }}>
+                  {error}
+                </Alert>
+              )}
               <PrimaryButton
                 sx={SigninCSS.loginBtn}
                 onClick={() => handleSubmit()}
@@ -156,7 +186,7 @@ const Signin = () => {
           </Button>
         </div>
       </Box>
-    </>
+    </div>
   );
 };
 
