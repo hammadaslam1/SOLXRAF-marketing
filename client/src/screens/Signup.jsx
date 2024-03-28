@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Alert,
   Backdrop,
@@ -20,27 +21,30 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { SIGNIN } from "../router/Router";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signinFailure,
+  signinSuccess,
+  signinStart,
+} from "../reduxStore/user/userSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
   const handleSubmit = async () => {
     const emailRegex =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     try {
-      setOpen(true);
+      dispatch(signinStart());
       if (!name || !password || !email) {
-        setOpen(false);
-        return setError("Please fill all required fields!");
+        return dispatch(signinFailure("Please fill all required fields"));
       } else if (!emailRegex.test(email)) {
-        setOpen(false);
-        return setError("Please enter a valid email address!");
+        return dispatch(signinFailure("Please enter a valid email address"));
       }
       const res = await fetch("http://localhost:3001/api/auth/signup", {
         method: "POST",
@@ -55,16 +59,14 @@ const Signup = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setOpen(false);
-        return setError(data.message);
+        return dispatch(signinFailure(data.message));
       }
       if (res.ok) {
-        setOpen(false);
+        dispatch(signinSuccess(data));
         navigate(SIGNIN);
       }
     } catch (error) {
-      setOpen(false);
-      setError(error.message);
+      dispatch(signinFailure(error.message));
     }
   };
   return (
@@ -72,8 +74,7 @@ const Signup = () => {
       <PageHeading>Signup</PageHeading>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={() => setOpen(false)}
+        open={loading}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -105,7 +106,6 @@ const Signup = () => {
                 label="Name"
                 onChange={(e) => {
                   setName(e.target.value);
-                  setError(null);
                 }}
                 startAdornment={<PersonIcon sx={{ color: "#304fa1", mr: 2 }} />}
                 placeholder="John Doe"
@@ -116,7 +116,6 @@ const Signup = () => {
                 label="Email"
                 onChange={(e) => {
                   setEmail(e.target.value.trim());
-                  setError(null);
                 }}
                 startAdornment={<Mail sx={{ color: "#304fa1", mr: 2 }} />}
                 placeholder="example@email.com"
@@ -127,7 +126,6 @@ const Signup = () => {
                 label="Password"
                 onChange={(e) => {
                   setPassword(e.target.value.trim());
-                  setError(null);
                 }}
                 startAdornment={<KeyIcon sx={{ color: "#304fa1", mr: 2 }} />}
                 endAdornment={

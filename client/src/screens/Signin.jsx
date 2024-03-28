@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   Alert,
   Backdrop,
@@ -21,23 +22,28 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import { HOME, SIGNUP } from "../router/Router";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signinFailure,
+  signinSuccess,
+  signinStart,
+} from "../reduxStore/user/userSlice";
 
 const Signin = () => {
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const handleSubmit = async () => {
     try {
+      dispatch(signinStart());
       const emailRegex =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      setOpen(true);
+      // setOpen(true);
       if (!emailRegex.test(email)) {
-        setOpen(false);
-        return setError("Please enter a valid email address!");
+        return dispatch(signinFailure("Please enter a valid email address"));
       }
       const res = await fetch("http://localhost:3001/api/auth/signin", {
         method: "POST",
@@ -51,16 +57,14 @@ const Signin = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setOpen(false);
-        return setError(data.message);
+        return dispatch(signinFailure(data.message));
       }
       if (res.ok) {
-        setOpen(false);
+        dispatch(signinSuccess(data));
         navigate(HOME);
       }
     } catch (error) {
-      setOpen(false);
-      setError(error.message);
+      return dispatch(signinFailure(error.message));
     }
   };
   return (
@@ -68,8 +72,7 @@ const Signin = () => {
       <PageHeading>Login</PageHeading>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={() => setOpen(false)}
+        open={loading}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
@@ -100,7 +103,6 @@ const Signin = () => {
                 label="Email"
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  setError(null);
                 }}
                 startAdornment={<Mail sx={{ color: "#304fa1", mr: 2 }} />}
                 placeholder="example@email.com"
@@ -111,7 +113,6 @@ const Signin = () => {
                 label="Password"
                 onChange={(e) => {
                   setPassword(e.target.value);
-                  setError(null);
                 }}
                 startAdornment={<KeyIcon sx={{ color: "#304fa1", mr: 2 }} />}
                 endAdornment={

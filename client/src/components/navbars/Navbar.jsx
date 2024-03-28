@@ -10,9 +10,11 @@ import { useEffect, useState } from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { HeaderCSS } from "./navbarCSS/HeaderCSS";
 import SolxrafAnimation from "../animations/SolxrafAnimation";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
   const [login, setLogin] = useState("Login");
 
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
@@ -76,7 +78,7 @@ const Navbar = () => {
               onClick={() => navigate(SIGNIN)}
             >
               <Avatar className="avatar" sx={HeaderCSS.avatar} />
-              {login}
+              {currentUser ? currentUser.name : login}
             </PrimaryButton>
           </div>
         </Toolbar>

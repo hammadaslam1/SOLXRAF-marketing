@@ -13,7 +13,11 @@ export const NavbarCSS = {
     height: "100px",
     minWidth: "fit-content",
   },
-  logoImage: { width: "clamp(25px, 10vw, 60px)", cursor: "pointer", marginright: "5px"},
+  logoImage: {
+    width: "clamp(25px, 10vw, 60px)",
+    cursor: "pointer",
+    marginright: "5px",
+  },
 
   authBtn: {
     display: "flex",
@@ -21,8 +25,10 @@ export const NavbarCSS = {
     alignItems: "center",
     fontSize: "0.8rem",
     height: "30px",
-    width: "100px",
+    // width: "100px",
     padding: "0",
+    pl: 2,
+    pr: 1,
     position: "relative",
     borderBottomRightRadius: "50px",
     borderTopRightRadius: "50px",
