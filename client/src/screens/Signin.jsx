@@ -21,13 +21,14 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import { HOME, SIGNUP } from "../router/Router";
 import { useNavigate } from "react-router-dom";
-import GoogleIcon from "@mui/icons-material/Google";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   signinFailure,
   signinSuccess,
   signinStart,
 } from "../reduxStore/user/userSlice";
+import GoogleButton from "../components/buttons/GoogleButton";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -177,14 +178,7 @@ const Signin = () => {
           >
             OR
           </div>
-          <Button
-            variant="contained"
-            sx={SigninCSS.googleBtn}
-            startIcon={<GoogleIcon sx={{ fontSize: "2rem" }} />}
-            disableElevation
-          >
-            Continue with Google
-          </Button>
+          <GoogleButton />
         </div>
       </Box>
     </div>

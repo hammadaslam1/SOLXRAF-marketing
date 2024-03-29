@@ -11,11 +11,13 @@ import PrimaryButton from "../buttons/PrimaryButton";
 import { HeaderCSS } from "./navbarCSS/HeaderCSS";
 import SolxrafAnimation from "../animations/SolxrafAnimation";
 import { useSelector } from "react-redux";
+import IMG from "../assets/logos/title_icon.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const [login, setLogin] = useState("Login");
+  console.log(currentUser.profilePicture);
 
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
@@ -77,8 +79,16 @@ const Navbar = () => {
               sx={[HeaderCSS.btn, NavbarCSS.authBtn]}
               onClick={() => navigate(SIGNIN)}
             >
-              <Avatar className="avatar" sx={HeaderCSS.avatar} />
-              {currentUser ? currentUser.name : login}
+              <Avatar
+                src={
+                  currentUser.profilePicture ? currentUser.profilePicture : ""
+                }
+                className="avatar"
+                sx={HeaderCSS.avatar}
+              >
+                {/* {currentUser.profilePicture ? currentUser.profilePicture : IMG} */}
+              </Avatar>
+              {currentUser ? currentUser.name.split(" ")[0] : login}
             </PrimaryButton>
           </div>
         </Toolbar>
