@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Avatar, Box, IconButton, Toolbar } from "@mui/material";
+import { Avatar, Box, Button, IconButton, Toolbar } from "@mui/material";
 import LOGO from "../assets/logos/solxraf01.png";
 import { navbarLinks } from "../../database/NavbarData";
 import { NavbarCSS } from "./NavbarCSS";
@@ -10,12 +10,14 @@ import { useEffect, useState } from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { HeaderCSS } from "./navbarCSS/HeaderCSS";
 import SolxrafAnimation from "../animations/SolxrafAnimation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import IMG from "../assets/logos/title_icon.png";
 import Menu from "./Menu";
 import MenuList from "./Menu";
+import { toggleTheme } from "../../reduxStore/theme/ThemeSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const [login, setLogin] = useState("Login");
@@ -112,6 +114,7 @@ const Navbar = () => {
               </PrimaryButton>
             )}
           </div>
+          {/* <Button onClick={() => dispatch(toggleTheme())}>toggle</Button> */}
         </Toolbar>
       </Box>
     </nav>
