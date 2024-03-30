@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Avatar, Box, Toolbar } from "@mui/material";
+import { Avatar, Box, IconButton, Toolbar } from "@mui/material";
 import LOGO from "../assets/logos/solxraf01.png";
 import { navbarLinks } from "../../database/NavbarData";
 import { NavbarCSS } from "./NavbarCSS";
@@ -12,12 +12,31 @@ import { HeaderCSS } from "./navbarCSS/HeaderCSS";
 import SolxrafAnimation from "../animations/SolxrafAnimation";
 import { useSelector } from "react-redux";
 import IMG from "../assets/logos/title_icon.png";
+import Menu from "./Menu";
+import MenuList from "./Menu";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const [login, setLogin] = useState("Login");
-  console.log(currentUser.profilePicture);
+
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
@@ -72,24 +91,26 @@ const Navbar = () => {
             ))}
           </div>
           <div style={{ flex: 2, display: "flex", justifyContent: "right" }}>
-            <PrimaryButton
-              className="loginBtn"
-              variant="outlined"
-              disableElevation
-              sx={[HeaderCSS.btn, NavbarCSS.authBtn]}
-              onClick={() => navigate(SIGNIN)}
-            >
-              <Avatar
-                src={
-                  currentUser.profilePicture ? currentUser.profilePicture : ""
-                }
-                className="avatar"
-                sx={HeaderCSS.avatar}
+            {currentUser ? (
+              <MenuList
+                handleCloseUserMenu={handleCloseUserMenu}
+                handleOpenUserMenu={handleOpenUserMenu}
+                anchorElUser={anchorElUser}
+                image={currentUser.profilePicture}
+                name={currentUser.username}
+              />
+            ) : (
+              <PrimaryButton
+                className="loginBtn"
+                variant="outlined"
+                disableElevation
+                sx={[HeaderCSS.btn, NavbarCSS.authBtn]}
+                onClick={() => navigate(SIGNIN)}
               >
-                {/* {currentUser.profilePicture ? currentUser.profilePicture : IMG} */}
-              </Avatar>
-              {currentUser ? currentUser.name.split(" ")[0] : login}
-            </PrimaryButton>
+                <Avatar className="avatar" sx={HeaderCSS.avatar} />
+                {login}
+              </PrimaryButton>
+            )}
           </div>
         </Toolbar>
       </Box>

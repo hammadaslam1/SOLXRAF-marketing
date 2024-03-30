@@ -5,3 +5,6 @@ export const CONTACT = "/contact";
 export const SIGNIN = "/signin";
 export const SIGNUP = "/signup";
 export const BLOGPAGE = "/blogpage";
+export const DASHBOARD = "/dashboard";
+export const PROFILE = "/dashboard?tab=profile";
+export const SIGNOUT = "/signout";
