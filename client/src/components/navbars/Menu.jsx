@@ -25,6 +25,7 @@ const MenuList = (props) => {
           <Avatar
             alt={currentUser.name.split(" ")[0]}
             src={currentUser.profilePicture}
+            sx={{ width: 52, height: 52 }}
           />
         </IconButton>
       </Tooltip>
