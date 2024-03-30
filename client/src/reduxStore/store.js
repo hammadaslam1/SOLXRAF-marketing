@@ -2,6 +2,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./user/userSlice";
 import themeReducer from "./theme/ThemeSlice";
+import tabReducer from "./tabs/tabSlice";
 import storage from "redux-persist/lib/storage";
 
 import { persistReducer, persistStore } from "redux-persist";
@@ -9,6 +10,7 @@ import { persistReducer, persistStore } from "redux-persist";
 const rootReducers = combineReducers({
   user: userReducer,
   theme: themeReducer,
+  tab: tabReducer,
 });
 
 const persistConfig = {

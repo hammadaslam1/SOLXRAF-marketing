@@ -5,13 +5,24 @@ export const DashboardCSS = {
   },
   sideMain: {
     minWidth: "300px",
-    minHeight: "100%",
+    // minHeight: "100%",
     p: 1,
-    overflowY: "scroll",
+    // overflowY: "scroll",
     overflowX: "hidden",
   },
   tabTitle: {
     m: 1,
+    borderRadius: "5px",
+    transition: "all 0.3s ease-in-out",
+    textTransform: "capitalize",
+    textAlign: "left",
+    "&:hover": {
+      backgroundColor: "#304fa1",
+      color: "#fff",
+    },
+  },
+  tabActive: {
     backgroundColor: "#304fa1",
+    color: "#fff !important",
   },
 };

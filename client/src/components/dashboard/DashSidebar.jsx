@@ -1,33 +1,53 @@
-import {
-  Box,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Tab,
-  Tabs,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Box, Tab, Tabs } from "@mui/material";
 import { DashboardCSS } from "../../styles/DashboardCSS";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { toggleTab } from "../../reduxStore/tabs/tabSlice";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 const DashSidebar = () => {
+  const tabsArray = ["profile", "signout"];
+  const { tabs } = useSelector((state) => state.tab);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState("");
+  const handleChange = (e, value) => {
+    // console.log(value);
+    setValue(value);
+    dispatch(toggleTab(tabsArray[value]));
+  };
   return (
     <Box sx={DashboardCSS.sideMain}>
       {/* <Toolbar variant="regular"> */}
       <Tabs
         orientation="vertical"
         variant="scrollable"
-        // value={value}
-        // onChange={handleChange}
+        value={value}
+        onChange={handleChange}
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider" }}
       >
-        <Tab sx={DashboardCSS.tabTitle} label="Item One" />
-        <Tab sx={DashboardCSS.tabTitle} label="Item Two" />
+        <Tab
+          sx={
+            tabs === "profile"
+              ? [DashboardCSS.tabTitle, DashboardCSS.tabActive]
+              : DashboardCSS.tabTitle
+          }
+          // icon={<PlayArrowIcon />}
+          // iconPosition="end"
+          label="Profile"
+          value={0}
+          // onClick={handleChange}
+        />
+        <Tab
+          sx={
+            tabs === "signout"
+              ? [DashboardCSS.tabTitle, DashboardCSS.tabActive]
+              : DashboardCSS.tabTitle
+          }
+          label="Sign out"
+          value={1}
+          // onClick={handleChange}
+        />
       </Tabs>
       {/* </Toolbar> */}
     </Box>
