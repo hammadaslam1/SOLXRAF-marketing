@@ -20,6 +20,7 @@ import Signup from "../screens/Signup";
 import Services from "../screens/Services";
 import BlogPage from "../screens/BlogPage";
 import Dashboard from "../screens/Dashboard";
+import PrivateRoute from "../components/private/PrivateRoute";
 
 const Navigation = () => {
   return (
@@ -34,7 +35,9 @@ const Navigation = () => {
           <Route path={BLOGS} element={<Blogs />} />
           <Route path={CONTACT} element={<Contact />} />
           <Route path={BLOGPAGE} element={<BlogPage />} />
-          <Route path={DASHBOARD} element={<Dashboard />} />
+          <Route element={<PrivateRoute />}>
+            <Route path={DASHBOARD} element={<Dashboard />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
