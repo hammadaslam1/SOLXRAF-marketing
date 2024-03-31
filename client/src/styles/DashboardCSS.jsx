@@ -14,15 +14,15 @@ export const DashboardCSS = {
   },
   tabTitle: {
     m: 1,
-    py: 0,
-    borderRadius: "5px",
+    // py: 0,
+    borderRadius: "10px",
     transition: "all 0.3s ease-in-out",
     textTransform: "capitalize",
     textAlign: "left",
     fontFamily: "Krona One",
     fontSize: "1rem",
     display: "flex",
-    height: "20px !important",
+    // height: "20px !important",
     justifyContent: "start",
     alignItems: "center",
     cursor: "pointer",
@@ -38,6 +38,33 @@ export const DashboardCSS = {
   tabIcon: {
     width: "30px",
     height: "30px",
-    mr: "15px",
+    mr: "20px",
+    ml: "5px",
+  },
+  mainProfileBox: {
+    backgroundColor: "#f00",
+    p: 4,
+    width: "100%",
+  },
+  dataCard: {
+    backgroundColor: "#0f0",
+    p: 2,
+    display: "flex",
+  },
+  profileCard: {
+    backgroundColor: "#00f",
+    p: 5,
+    borderRadius: "10px",
+    overflow: "hidden",
+  },
+  detailCard: {
+    backgroundColor: "#ff0",
+    p: 5,
+  },
+  divider: {
+    width: "100%",
+    height: "10vh",
+    backgroundColor: "#000",
+    margin: "10px 0",
   },
 };
