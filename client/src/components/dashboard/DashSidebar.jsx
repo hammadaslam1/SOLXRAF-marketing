@@ -3,7 +3,8 @@ import { DashboardCSS } from "../../styles/DashboardCSS";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { toggleTab } from "../../reduxStore/tabs/tabSlice";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const DashSidebar = () => {
   const tabsArray = ["profile", "signout"];
@@ -16,7 +17,7 @@ const DashSidebar = () => {
     dispatch(toggleTab(tabsArray[value]));
   };
   return (
-    <Box sx={DashboardCSS.sideMain}>
+    <Box>
       {/* <Toolbar variant="regular"> */}
       <Tabs
         orientation="vertical"
@@ -24,7 +25,8 @@ const DashSidebar = () => {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider" }}
+        // sx={{ borderRight: 1, borderColor: "divider" }}
+        sx={[DashboardCSS.sideMain, { borderRight: 1, borderColor: "divider" }]}
       >
         <Tab
           sx={
@@ -32,11 +34,10 @@ const DashSidebar = () => {
               ? [DashboardCSS.tabTitle, DashboardCSS.tabActive]
               : DashboardCSS.tabTitle
           }
-          // icon={<PlayArrowIcon />}
-          // iconPosition="end"
+          icon={<AccountBoxIcon sx={DashboardCSS.tabIcon} />}
+          iconPosition="start"
           label="Profile"
           value={0}
-          // onClick={handleChange}
         />
         <Tab
           sx={
@@ -44,9 +45,10 @@ const DashSidebar = () => {
               ? [DashboardCSS.tabTitle, DashboardCSS.tabActive]
               : DashboardCSS.tabTitle
           }
+          icon={<LogoutIcon sx={DashboardCSS.tabIcon} />}
+          iconPosition="start"
           label="Sign out"
           value={1}
-          // onClick={handleChange}
         />
       </Tabs>
       {/* </Toolbar> */}
