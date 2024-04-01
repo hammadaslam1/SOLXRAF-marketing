@@ -4,6 +4,7 @@ export const DashboardCSS = {
     minHeight: "80vh",
   },
   sideMain: {
+    flex: 1,
     // position: 'relative',
     // backgroundColor: "#304fa177",
     minWidth: "300px",
@@ -42,6 +43,7 @@ export const DashboardCSS = {
     ml: "5px",
   },
   mainProfileBox: {
+    // flex: 2,
     // backgroundColor: "#f00",
     p: 3,
     width: "100%",
@@ -50,11 +52,14 @@ export const DashboardCSS = {
     // backgroundColor: "#0f0",
     p: 2,
     display: "flex",
+    justifyContent: "space-evenly",
+    flexWrap: "wrap",
   },
   profileCard: {
+    height: "fit-content",
     flex: 1,
     // backgroundColor: "#00f",
-    // p: 5,
+    minWidth: "220px",
     m: 1,
     borderRadius: "10px",
     border: "1px solid #e6e6e6",
@@ -71,7 +76,7 @@ export const DashboardCSS = {
     // backgroundColor: "#ff0",
     borderRadius: "10px",
     overflow: "hidden",
-    // p: 5,
+    minWidth: "400px",
   },
   divider: {
     width: "100%",
@@ -100,5 +105,17 @@ export const DashboardCSS = {
     fontFamily: "Krona One",
     borderRadius: "12px",
     textTransform: "capitalize",
+  },
+  detailTop: {
+    p: 2,
+    px: 3,
+  },
+  detailMiddle: {
+    p: 2,
+    px: 3,
+  },
+  detailBottom: {
+    p: 2,
+    px: 3,
   },
 };
