@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <div style={DashboardCSS.main}>
       <DashSidebar />
-      {tabs == tab && <DashProfile />}
+      {tabs === tab && <DashProfile />}
     </div>
   );
 };
