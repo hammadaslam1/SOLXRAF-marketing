@@ -55,13 +55,17 @@ export const DashboardCSS = {
     justifyContent: "space-evenly",
     flexWrap: "wrap",
   },
+  profileTitle: {
+    fontFamily: "Krona One",
+    color: "#304fa1",
+  },
   profileCard: {
     height: "fit-content",
     flex: 1,
     // backgroundColor: "#00f",
     minWidth: "220px",
     m: 1,
-    borderRadius: "10px",
+    borderRadius: "20px",
     border: "1px solid #e6e6e6",
     overflow: "hidden",
     display: "flex",
@@ -110,12 +114,43 @@ export const DashboardCSS = {
     p: 2,
     px: 3,
   },
+  detailHead: {
+    fontFamily: "Krona One",
+    color: "#304fa1",
+    fontSize: "1.5rem",
+    // fontWeight: "bold",
+    textTransform: "capitalize",
+  },
+  detailCaption: {
+    fontFamily: "Krona One",
+    color: "#304fa1",
+    fontSize: "0.8rem",
+    // fontWeight: "bold",
+    textTransform: "capitalize",
+  },
+
   detailMiddle: {
     p: 2,
     px: 3,
   },
   detailBottom: {
+    display: "flex",
+    justifyContent: "right",
     p: 2,
     px: 3,
+  },
+  detailBtn: {
+    px: 3,
+    py: 1,
+    borderRadius: "12px",
+    backgroundColor: "#304fa1",
+    textTransform: "capitalize",
+    fontFamily: "Krona One",
+    border: "1px solid #304fa1",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "#304fa1",
+    },
   },
 };

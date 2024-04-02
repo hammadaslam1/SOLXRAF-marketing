@@ -98,6 +98,7 @@ const Navbar = () => {
                 handleCloseUserMenu={handleCloseUserMenu}
                 handleOpenUserMenu={handleOpenUserMenu}
                 anchorElUser={anchorElUser}
+                setAnchorElUser={setAnchorElUser}
                 image={currentUser.profilePicture}
                 name={currentUser.username}
               />

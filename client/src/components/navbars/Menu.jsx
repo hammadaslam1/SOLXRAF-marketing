@@ -59,6 +59,7 @@ const MenuList = (props) => {
               sx={[MenuCSS.profileBtn]}
               onClick={() => {
                 navigate(PROFILE);
+                props.setAnchorElUser(null);
               }}
             >
               Profile
@@ -66,7 +67,13 @@ const MenuList = (props) => {
           </div>
         </div>
         {MenuData.map((data, i) => (
-          <MenuItem key={i} onClick={() => navigate(data.to)}>
+          <MenuItem
+            key={i}
+            onClick={() => {
+              props.setAnchorElUser(null);
+              navigate(data.to);
+            }}
+          >
             <Typography textAlign="center">{data.name}</Typography>
           </MenuItem>
         ))}
