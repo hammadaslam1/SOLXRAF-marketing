@@ -60,7 +60,7 @@ export const ContactCSS = {
   },
   login: {
     flex: "1 1 auto",
-    backgroundColor: "#f8f8f8",
+    // backgroundColor: "#304fa111",
     color: "#304fa1",
     fontFamily: "Krona One",
     minWidth: "300px",

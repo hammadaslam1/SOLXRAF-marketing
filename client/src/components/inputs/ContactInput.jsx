@@ -30,7 +30,7 @@ const ContactInput = ({ sx = {}, ...props }) => {
       <OutlinedInput
         id="input-with-icon-adornment"
         sx={{
-          backgroundColor: "#f8f8f8",
+          backgroundColor: "#304fa111",
           color: "#304fa1",
           fontFamily: "Krona One",
         }}

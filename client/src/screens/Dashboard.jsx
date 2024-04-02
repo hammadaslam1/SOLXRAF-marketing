@@ -18,9 +18,10 @@ const Dashboard = () => {
     }
   }, [location.search]);
   return (
-    <div style={DashboardCSS.main}>
+    <div style={DashboardCSS.main} className="min-h-screen flex flex-row">
       <DashSidebar />
-      {tabs === tab && <DashProfile />}
+      {tabs === "profile" && <DashProfile />}
+      {tabs === "signout" && <h1>signed out</h1>}
     </div>
   );
 };

@@ -58,8 +58,8 @@ const MenuList = (props) => {
               size="small"
               sx={[MenuCSS.profileBtn]}
               onClick={() => {
-                navigate(PROFILE);
                 props.setAnchorElUser(null);
+                navigate(PROFILE);
               }}
             >
               Profile

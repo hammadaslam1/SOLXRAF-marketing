@@ -16,12 +16,8 @@ const DashProfile = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
-  // const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  // const [url, setUrl] = useState("");
-  // const [affProgram, setAffProgram] = useState("");
-  // const [about, setAbout] = useState("");
   const fields = [
     {
       value: username,
@@ -98,7 +94,6 @@ const DashProfile = () => {
               className="text-700"
               sx={{
                 color: "#304fa1",
-                // lineHeight: "3",
                 fontFamily: "Krona One",
                 textAlign: "center",
                 mt: 1,

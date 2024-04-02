@@ -7,4 +7,5 @@ export const SIGNUP = "/signup";
 export const BLOGPAGE = "/blogpage";
 export const DASHBOARD = "/dashboard";
 export const PROFILE = "/dashboard?tab=profile";
-export const SIGNOUT = "/signout";
+export const SIGNOUT = "/dashboard?tab=signout";
+// export const SIGNOUT = "/signout";
