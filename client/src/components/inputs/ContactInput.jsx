@@ -20,6 +20,7 @@ const ContactInput = ({ sx = {}, ...props }) => {
         ...sx,
       }}
       required={props.required}
+      defaultValue={props.defaultValue}
     >
       <InputLabel
         htmlFor="input-with-icon-adornment"
@@ -35,6 +36,7 @@ const ContactInput = ({ sx = {}, ...props }) => {
           fontFamily: "Krona One",
         }}
         {...props}
+        defaultValue={props.defaultValue}
       />
     </FormControl>
   );

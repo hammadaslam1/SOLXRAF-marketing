@@ -16,6 +16,7 @@ import { MenuCSS } from "./navbarCSS/MenuCSS";
 
 const MenuList = (props) => {
   const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser.profilePicture);
   const navigate = useNavigate();
   const handleClick = () => {};
   return (
