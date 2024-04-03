@@ -12,6 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { ContactCSS } from "../../styles/ContactCSS";
 import { useEffect, useRef, useState } from "react";
 import ContactInput from "../inputs/ContactInput";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { HOME } from "../../router/Router";
 import {
   getDownloadURL,
   getStorage,
@@ -21,26 +24,78 @@ import {
 import { app } from "../../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import LoginInput from "../inputs/LoginInput";
+import {
+  updateFailure,
+  updateStart,
+  updateSuccess,
+} from "../../reduxStore/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const DashProfile = () => {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  const [password, setPassword] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [imageProgress, setImageProgress] = useState(null);
-  const [error, setError] = useState(null);
+  const [imageError, setError] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   console.log(imageProgress);
   const filePickerRef = useRef();
+  console.log(currentUser._id);
+  const handleDetails = async () => {
+    if (email && username && password && name) {
+      setFormData({
+        ...formData,
+        username: username,
+        name: name,
+        email: email,
+        password: password,
+      });
+      try {
+        dispatch(updateStart());
+        const emailRegex =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        // setOpen(true);
+        if (!emailRegex.test(email)) {
+          return dispatch(updateFailure("Please enter a valid email address"));
+        }
+        const res = await fetch(`http://localhost:3001/api/user/update/${currentUser._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
+        const data = await res.json();
+        if (data.success === false) {
+          return dispatch(updateFailure(data.message));
+        }
+        if (res.ok) {
+          dispatch(updateSuccess(data));
+          navigate(HOME);
+        }
+      } catch (error) {
+        dispatch(updateFailure(error.message));
+      }
+    } else {
+      dispatch(updateFailure("Please fill all required fields."));
+    }
+  };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      uploadImage();
       setImageFile(file);
       setImageUrl(URL.createObjectURL(file));
+      uploadImage();
     }
     // console.log(imageFile, imageUrl);
   };
@@ -63,13 +118,16 @@ const DashProfile = () => {
         setError(null);
       },
       (error) => {
-        setError(`image couldn't be uploaded \nit should be less than 2MB`);
+        // setError(`image couldn't be uploaded \nit should be less than 2MB`);
+        setError(error.message);
         console.log(error.message);
-        setImageUrl(null);
+        // setImageUrl(null);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL);
+          console.log(downloadURL);
+          setFormData({ ...formData, profilePicture: downloadURL });
         });
       }
     );
@@ -115,17 +173,25 @@ const DashProfile = () => {
       defaultValue: currentUser.email,
     },
     {
-      value: role,
-      label: "Your Role",
-      type: "text",
+      value: password,
+      label: "New Password",
+      type: !showPassword ? "password" : "text",
       onChange: (e) => {
-        setRole(e.target.value);
+        setPassword(e.target.value);
         // setIsFilled(false);
       },
-      // startAdornment: <PlaceIcon sx={{ color: "#304fa1", mr: 2 }} />,
-      placeholder: "Manager",
-      required: false,
-      defaultValue: currentUser.isAdmin ? "Admin" : "User",
+      endAdornment: (
+        <IconButton onClick={() => setShowPassword((show) => !show)}>
+          {showPassword ? (
+            <VisibilityIcon sx={{ color: "#304fa1" }} />
+          ) : (
+            <VisibilityOffIcon sx={{ color: "#304fa1" }} />
+          )}
+        </IconButton>
+      ),
+      placeholder: !showPassword ? "xxxxxxxx" : "password",
+      required: true,
+      defaultValue: "",
     },
   ];
   return (
@@ -141,7 +207,7 @@ const DashProfile = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={handleImageChange}
+              onChange={uploadImage}
               ref={filePickerRef}
               hidden
             />
@@ -197,7 +263,7 @@ const DashProfile = () => {
             <Typography>
               {imageProgress > 0 && imageProgress < 100 && `${imageProgress}%`}
             </Typography>
-            {error && <Alert severity="error">{error}</Alert>}
+            {imageError && <Alert severity="error">{error}</Alert>}
             <Typography
               variant="h6"
               className="text-700"
@@ -241,19 +307,24 @@ const DashProfile = () => {
           <Box sx={DashboardCSS.detailMiddle}>
             <div style={ContactCSS.fieldDiv}>
               <div style={ContactCSS.fields}>
+                {error && (
+                  <Alert
+                    variant="filled"
+                    severity="error"
+                    sx={{ width: "100%" }}
+                  >
+                    {error}
+                  </Alert>
+                )}
                 {fields.map((data, i) => (
-                  <ContactInput
-                    key={i}
+                  <LoginInput
                     type={data.type}
                     value={data.value}
                     label={data.label}
-                    sx={ContactCSS.login}
                     onChange={data.onChange}
-                    // startAdornment={data.startAdornment}
+                    // startAdornment={<KeyIcon sx={{ color: "#304fa1", mr: 2 }} />}
+                    endAdornment={data.endAdornment}
                     placeholder={data.placeholder}
-                    inputComponent="input"
-                    required={data.required}
-                    defaultValue={data.defaultValue}
                   />
                 ))}
               </div>
@@ -261,7 +332,12 @@ const DashProfile = () => {
           </Box>
           <div style={DashboardCSS.divider}></div>
           <Box sx={DashboardCSS.detailBottom}>
-            <Button variant="plain" sx={DashboardCSS.detailBtn} disableElevation>
+            <Button
+              variant="plain"
+              sx={DashboardCSS.detailBtn}
+              disableElevation
+              onClick={handleDetails}
+            >
               Save Details
             </Button>
           </Box>
