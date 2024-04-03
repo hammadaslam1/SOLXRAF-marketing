@@ -7,7 +7,7 @@ import authRoutes from './routes/auth.route.js';
 import postRoutes from './routes/post.route.js';
 import commentRoutes from './routes/comment.route.js';
 import { MONGODB } from '../ENV.js'
-// import cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import path from 'path';
 
 
@@ -29,7 +29,7 @@ app.use(cors());
 
 
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 
 app.listen(3001, () => {
     console.log('Server is running on port 3001!');

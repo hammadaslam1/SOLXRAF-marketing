@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { DashboardCSS } from "../../styles/DashboardCSS";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ContactCSS } from "../../styles/ContactCSS";
 import { useEffect, useRef, useState } from "react";
 import ContactInput from "../inputs/ContactInput";
@@ -23,6 +23,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const DashProfile = () => {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -64,6 +65,7 @@ const DashProfile = () => {
       (error) => {
         setError(`image couldn't be uploaded \nit should be less than 2MB`);
         console.log(error.message);
+        setImageUrl(null);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -259,7 +261,7 @@ const DashProfile = () => {
           </Box>
           <div style={DashboardCSS.divider}></div>
           <Box sx={DashboardCSS.detailBottom}>
-            <Button variant="plain" sx={DashboardCSS.detailBtn}>
+            <Button variant="plain" sx={DashboardCSS.detailBtn} disableElevation>
               Save Details
             </Button>
           </Box>
