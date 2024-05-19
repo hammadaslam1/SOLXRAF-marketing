@@ -66,7 +66,8 @@ const DashProfile = () => {
         if (!emailRegex.test(email)) {
           return dispatch(updateFailure("Please enter a valid email address"));
         }
-        const res = await fetch(`http://localhost:3001/api/user/update/${currentUser._id}`,
+        const res = await fetch(
+          `http://localhost:3001/api/user/update/${currentUser._id}`,
           {
             method: "PUT",
             headers: {
@@ -95,7 +96,7 @@ const DashProfile = () => {
     if (file) {
       setImageFile(file);
       setImageUrl(URL.createObjectURL(file));
-      uploadImage();
+      uploadImage(file);
     }
     // console.log(imageFile, imageUrl);
   };
@@ -104,11 +105,18 @@ const DashProfile = () => {
       // uploadImage();
     }
   }, [imageFile]);
-  const uploadImage = async () => {
+  const uploadImage = async (imageFile) => {
+    console.log(1);
     const storage = getStorage(app);
+    console.log(2);
     const fileName = currentUser.username;
+    console.log(3);
     const storageRef = ref(storage, fileName);
+    console.log(imageFile);
+    console.log(4);
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
+    console.log(uploadTask);
+    console.log(5);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -116,6 +124,7 @@ const DashProfile = () => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setImageProgress(progress.toFixed(0));
         setError(null);
+        // console.log("Download");
       },
       (error) => {
         // setError(`image couldn't be uploaded \nit should be less than 2MB`);
@@ -123,8 +132,9 @@ const DashProfile = () => {
         console.log(error.message);
         // setImageUrl(null);
       },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      async () => {
+        console.log("Download");
+        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL);
           console.log(downloadURL);
           setFormData({ ...formData, profilePicture: downloadURL });
@@ -207,7 +217,7 @@ const DashProfile = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={uploadImage}
+              onChange={handleImageChange}
               ref={filePickerRef}
               hidden
             />
@@ -263,7 +273,7 @@ const DashProfile = () => {
             <Typography>
               {imageProgress > 0 && imageProgress < 100 && `${imageProgress}%`}
             </Typography>
-            {imageError && <Alert severity="error">{error}</Alert>}
+            {imageError && <Alert severity="error">{imageError}</Alert>}
             <Typography
               variant="h6"
               className="text-700"
