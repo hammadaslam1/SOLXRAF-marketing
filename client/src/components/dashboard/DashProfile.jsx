@@ -94,6 +94,7 @@ const DashProfile = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      console.log(e.target.files);
       setImageFile(file);
       setImageUrl(URL.createObjectURL(file));
       uploadImage(file);
@@ -106,41 +107,17 @@ const DashProfile = () => {
     }
   }, [imageFile]);
   const uploadImage = async (imageFile) => {
-    console.log(1);
-    const storage = getStorage(app);
-    console.log(2);
-    const fileName = currentUser.username;
-    console.log(3);
-    const storageRef = ref(storage, fileName);
-    console.log(imageFile);
-    console.log(4);
-    const uploadTask = uploadBytesResumable(storageRef, imageFile);
-    console.log(uploadTask);
-    console.log(5);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setImageProgress(progress.toFixed(0));
-        setError(null);
-        // console.log("Download");
+    await fetch("http://localhost:3001/api/image/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      (error) => {
-        // setError(`image couldn't be uploaded \nit should be less than 2MB`);
-        setError(error.message);
-        console.log(error.message);
-        // setImageUrl(null);
-      },
-      async () => {
-        console.log("Download");
-        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImageUrl(downloadURL);
-          console.log(downloadURL);
-          setFormData({ ...formData, profilePicture: downloadURL });
-        });
-      }
-    );
+      body: JSON.stringify({ testImage: imageFile, name: imageFile.name }),
+    })
+      .then(async (res) => {
+        await res.json();
+      })
+      .then((result) => console.log(result));
   };
   const fields = [
     {
